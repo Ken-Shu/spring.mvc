@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Index</title>
 </head>
-<body>
+<body bgcolor="#FFAAD5">
 	Index Page <%=new Date() %>
 	<h2>Session 08</h2>
 	<ol>
@@ -16,6 +16,10 @@
 		<li><a href="./mvc/hello/bmi?height=170&weight=60">getbmi</a></li>
 		<li><a href="./mvc/hello/age?age=17&age=90&age=60">age</a></li>
 		<li><a href="./mvc/hello/symbol?symbol=2330.TW&symbol=2317.TW">symbol</a></li>
+		<li><a href="./mvc/hello/person?name=Tom&score=90.5&age=18&pass=true">person</a></li>
+		<li><a href="./mvc/data/case1">data case1</a></li>
+		<li><a href="./mvc/model/case1">model case1</a></li>
+		<li><a href="./mvc/model/case3">redirect(重定向): case3</a></li>
 	</ol>
 </body>
 </html>

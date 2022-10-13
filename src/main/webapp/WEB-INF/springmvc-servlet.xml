@@ -30,11 +30,17 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	
-	
 	<!-- spring mvc annotation enable : 啟用 spring mvc 的 @annotation 配置功能-->
 	 <mvc:annotation-driven />
 	
 	<!-- component scan 掃描 spring-mvc 下所有的java 城市-->
 	<context:component-scan base-package="spring.mvc"/>
 	
+	<!-- 配置view 渲染器位置-->
+	<bean id="internalResourceViewResolver"
+			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
 </beans>		
