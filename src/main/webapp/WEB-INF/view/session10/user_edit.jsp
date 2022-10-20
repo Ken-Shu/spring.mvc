@@ -1,0 +1,67 @@
+<%@ page import="spring.mvc.session10.entity.User"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spform" uri="http://www.springframework.org/tags/form" %>
+    
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css">
+		<meta charset="UTF-8">
+		<title>User Edit Page</title>
+	</head>
+	
+	<body style="padding: 15px">
+		
+		<table border="0">
+			<td valign="top">
+				<!-- User Form 表單修改-->
+				<spform:form class="pure-form" method="post" modelAttribute="user" action="${pageContext.request.contextPath }/mvc/user/${id}">
+				<!-- 在spform 表單中 上方 method 可以輸入 put 則出來 spform 機制中 會自動加入
+				<input type="hidden" value="put" name="_method"/> 此隱含式 來讓 controller 傳送 Http Put 方法
+				-->
+				<input type="hidden" value="put" name="_method"/>
+					<fieldset>
+						<legend>User 表單修改</legend>
+						姓名: <spform:input path="name"/> <p />
+						年齡: <spform:input path="age" type="number"/> <p />
+						生日: <spform:input path="birth" type="date"/> <p />
+						學歷: <spform:select path="education">
+							<spform:option value="">請選擇</spform:option>
+							<spform:option value="國中以下">國中以下</spform:option>
+							<spform:option value="高中">高中</spform:option>
+							<spform:option value="大學">大學</spform:option>
+							<spform:option value="研究所">研究所</spform:option>
+						</spform:select > <p />
+						性別: 
+						<spform:radiobutton path="sex" value="男"/>男 
+						<spform:radiobutton path="sex" value="女"/>女 <p />
+						興趣: <p /> 
+							 <spform:checkbox path="interest" value="爬山"/>爬山 
+							 <spform:checkbox path="interest" value="看電影"/>看電影 
+							 <spform:checkbox path="interest" value="寫程式"/>寫程式 
+							 <spform:checkbox path="interest" value="玩遙控"/>玩遙控 <p />
+						履歷: <spform:textarea path="resume"/> <p />
+						<button type="submit" class="pure-button pure-button-primary">修改</button>
+					</fieldset>
+				</spform:form>
+			</td>
+			
+			
+			<td valign="top">
+				<!-- User Form 表單紀錄刪除-->
+				<spform:form class="pure-form" method="delete" action="${pageContext.request.contextPath }/mvc/user/${id}">
+					<fieldset>
+						<legend>User 表單紀錄刪除</legend>
+						<button type="submit" class="pure-button pure-button-primary">刪除</button>
+					</fieldset>
+				</spform:form>
+			</td>
+		</table>
+	</body>
+</html>
