@@ -22,6 +22,8 @@
 		<li><a href="./mvc/model/case3">redirect(重定向): case3</a></li>
 		<li><a href="./mvc/lotto/">lotto</a></li>
 		<li><a href="./mvc/user/">User</a></li>
+		<li><a href="./mvc/person/">Person Form</a></li>
+		<li><a href="./mvc/mystock/">MyStock</a></li>
 	</ol>
 </body>
 </html>
