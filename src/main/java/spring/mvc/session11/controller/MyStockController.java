@@ -1,4 +1,4 @@
-package spring.mvc.session10.controller;
+package spring.mvc.session11.controller;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -28,7 +28,7 @@ public class MyStockController {
 	
 	@GetMapping(value = "/")
 	public String index(Model model, @ModelAttribute MyStock myStock) {
-		model.addAttribute("mystocks",myStocks);
+		model.addAttribute("myStocks",myStocks);
 		return "session11/mystock";
 	}
 
@@ -37,7 +37,7 @@ public class MyStockController {
 		//配置自訂錯誤驗證
 		myStockValidator.validate(myStock, result);
 		if(result.hasErrors()) {
-			model.addAttribute("mystocks", myStocks);
+			model.addAttribute("myStocks", myStocks);
 			return "session11/mystock";
 		}
 		myStocks.add(myStock);
