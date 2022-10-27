@@ -24,6 +24,7 @@
 		<li><a href="./mvc/user/">User</a></li>
 		<li><a href="./mvc/person/">Person Form</a></li>
 		<li><a href="./mvc/mystock/">MyStock</a></li>
+		<li><a href="./mvc/jdbc/employee/">Employee And Job</a></li>
 	</ol>
 </body>
 </html>
