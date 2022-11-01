@@ -8,6 +8,7 @@
 <%@ taglib prefix="spform" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
+
 <head>
 	<link rel="stylesheet"
 		href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
@@ -18,12 +19,14 @@
 			color: #FF0000;
 		}
 	</style>
+	
 	<script type="text/javascript">
 		function changeMethodAndSubmit(methodValue) {
 			document.getElementById("_method").value = methodValue;
 			document.getElementById("job").submit();
 		}
 	</script>
+	
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript">
 	google.charts.load('current', {'packages':['corechart']});
@@ -53,7 +56,9 @@
 			chart.draw(data, options);	    	
 	    }
 	</script>
+	
 </head>
+
 <body style="padding: 15px;">
 	<table >
 		<tr>
@@ -87,11 +92,18 @@
 			<!-- Job List -->
 			<td valign="top" colspan="2">
 				<form class="pure-form">
+				
 					<fieldset>
 						<legend>
 							Job List | 分頁查詢
 							<c:forEach var="num" begin="1" end="${ pageCount }">
-								<a href="${ pageContext.request.contextPath }/mvc/jdbc/job/page/${ num }">${ num }</a>&nbsp;
+								<c:if test="${num eq pageNum }">
+									${ num }&nbsp;	
+								</c:if>
+								<c:if test="${num != pageNum }">
+									<a href="${ pageContext.request.contextPath }/mvc/jdbc/job/page/${ num }">${ num }</a>&nbsp;
+								</c:if>
+								
 							</c:forEach>
 						</legend>
 					</fieldset>

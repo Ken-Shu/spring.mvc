@@ -6,7 +6,7 @@ import spring.mvc.session12.entity.Job;
 
 public interface JobDao {
 	// 每頁筆數
-	int LIMIT = 5;
+	int LIMIT = 10;
 	
 	// 新增
 	int add(Job job);
@@ -18,7 +18,7 @@ public interface JobDao {
 	int delete(Integer jid);
 	
 	// 查詢所有筆數
-	int getcount();
+	int getCount();
 	// 查詢單筆資料
 	Job getById(Integer jid);
 	
