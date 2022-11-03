@@ -9,6 +9,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['name', 'salary'],
+          <c:forEach var="emp" items="${employees}">
+          	['${emp.ename}', ${emp.salary}],
+          </c:forEach>
+        ]);
+
+        var options = {
+          title: 'Employee Salary'
+        };
+		
+        var chart1 = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+        var chart2 = new google.visualization.PieChart(document.getElementById('piechart'));
+		chart1.draw(data, options);
+        chart2.draw(data, options);
+      }
+    </script>
 	<link rel="stylesheet"
 		href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
 	<meta charset="UTF-8">
@@ -65,10 +89,12 @@
 			<!-- Salary Column Chart -->
 			<td valign="top">
 				Salary Column Chart
+				<div id="columnchart" style="width: 400px; height: 250px;"></div>
 			</td>
 			<!-- Salary Pie Chart -->
 			<td valign="top">
 				Salary Pie Chart
+				<div id="piechart" style="width: 400px; height: 250px;"></div>
 			</td>
 			<!-- Jobs Line Chart -->
 			<td valign="top">
@@ -81,7 +107,15 @@
 				<form class="pure-form">
 					<fieldset>
 						<legend>
-							Employee List
+							Employee List | 分頁查詢 
+							<c:forEach var="num" begin="1" end="${pageCount}">
+								<c:if test="${num eq pageNum }">
+									${ num }&nbsp;	
+								</c:if>
+								<c:if test="${num != pageNum }">
+									<a href="${pageContext.request.contextPath }/mvc/jdbc/employee/page/${num}">${ num }</a>&nbsp;&nbsp;
+								</c:if>
+							</c:forEach>
 						</legend>
 						<table class="pure-table pure-table-bordered" style="width: 100%">
 							<thead>
@@ -93,7 +127,7 @@
 								<c:forEach var="emp" items="${ employees }">
 									<tr>
 										<td>
-											<a href="./${ emp.eid }" title="按我一下可以修改">
+											<a href="${ pageContext.request.contextPath }/mvc/jdbc/employee/${emp.eid}" title="按我一下可以修改">
 												${ emp.eid }
 											</a>
 										</td>
@@ -101,7 +135,9 @@
 										<td>${ emp.salary }</td>
 										<td>
 											<c:forEach var="job" items="${ emp.jobs }">
-												${ job.jname }
+												<a href="${pageContext.request.contextPath }/mvc/jdbc/job/${job.jid}">&nbsp;
+													${ job.jname }
+												</a>
 											</c:forEach>
 										</td>
 										<td>${ emp.createtime }</td>
