@@ -25,6 +25,8 @@
 		<li><a href="./mvc/person/">Person Form</a></li>
 		<li><a href="./mvc/mystock/">MyStock</a></li>
 		<li><a href="./mvc/jdbc/employee/">Employee And Job</a></li>
+		<li><a href="./mvc/session13/div/">Div</a></li>
+		<li><a href="./mvc/session13/book_author/">book_author</a></li>
 	</ol>
 </body>
 </html>
